@@ -20,5 +20,7 @@ Decoding Order Data -> fromBase64 -> zLib.Deflate -> fromBase64 -> Qoi -> Image
 the place with editable images --you will find the usage there as well
 
 [ZLib](https://devforum.roblox.com/t/string-compression-zlibdeflate/755687)
+
 [Base64](https://devforum.roblox.com/t/base64-encoding-and-decoding-in-lua/1719860)
+
 [Qoi specification](https://qoiformat.org/qoi-specification.pdf) recreated for this project
