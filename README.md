@@ -24,3 +24,5 @@ the place with editable images --you will find the usage there as well
 [Base64](https://devforum.roblox.com/t/base64-encoding-and-decoding-in-lua/1719860)
 
 [Qoi specification](https://qoiformat.org/qoi-specification.pdf) recreated for this project
+
+Requires OpenCV C++ [Installation Guide](https://youtu.be/lNmA9WATqQU?si=UoaANBz_N2l5X37e&t=1672)
