@@ -151,7 +151,14 @@
   <ItemGroup>
     <ClInclude Include="base64.h" />
     <ClInclude Include="BaseTools.h" />
+    <ClInclude Include="Binary.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Compactor.h" />
+    <ClInclude Include="ImageProcessor.h" />
+    <ClInclude Include="Huffman.h" />
+    <ClInclude Include="ImageUtilities.h" />
     <ClInclude Include="LuaHandler.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Qoi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

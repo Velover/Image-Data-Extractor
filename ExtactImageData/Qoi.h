@@ -3,11 +3,11 @@
 #include <iostream>;
 #include <string>
 #include <fstream>;
-#include <sstream>
 #include <tuple>
 
 #include "base64.h";
 #include "BaseTools.h";
+#include "Color.h";
 
 typedef unsigned char BYTE;
 
@@ -22,89 +22,6 @@ int QOI_OP_DIFF = 0b01000000;
 
 int QOI_HEADER_SIZE = 14;
 int QOI_ENDING[] = { 0, 0, 0, 0, 0, 0, 0, 1 };
-
-class Color {
-public:
-	int r;
-	int g;
-	int b;
-	int a;
-
-	friend Color operator-(Color& color_1, Color& color_2) {
-		return Color(
-			color_1.r - color_2.r,
-			color_1.g - color_2.g,
-			color_1.b - color_2.b,
-			color_1.a - color_2.a
-		);
-	}
-
-	friend bool operator==(Color& color_1, Color& color_2) {
-		return
-			color_1.r == color_2.r &&
-			color_1.g == color_2.g &&
-			color_1.b == color_2.b &&
-			color_1.a == color_2.a;
-	}
-
-	friend std::ostream& operator<<(std::ostream &out, Color const& color) {
-		out << "[";
-
-		out << color.r << ", ";
-		out << color.g << ", ";
-		out << color.b << ", ";
-		out << color.a << "]";
-
-		return out;
-	}
-
-	Color() {
-		this->r = 0;
-		this->g = 0;
-		this->b = 0;
-		this->a = 0;
-	}
-
-	Color(int color_value) {
-		int r = (0x000000ff & color_value) >> 0;
-		int g = (0x0000ff00 & color_value) >> 8;
-		int b = (0x00ff0000 & color_value) >> 16;
-		int a = (0xff000000 & color_value) >> 24;
-
-		this->r = r;
-		this->g = g;
-		this->b = b;
-		this->a = a;
-	}
-
-	Color(int r, int g, int b, int a) {
-		this->r = r;
-		this->g = g;
-		this->b = b;
-		this->a = a;
-	}
-
-	~Color() {
-
-	}
-
-	void Log() {
-		std::cout << "r: " << this->r
-			<< " g: " << this->g
-			<< " b: " << this->b
-			<< " a: " << this->a
-			<< std::endl;
-	}
-
-	int GetHash() {
-		return
-			(this->r * 3 + this->g * 5 + this->b * 7 + this->a * 11) % 64;
-	}
-
-	int To32BitValue() {
-		return (this->r << 0) + (this->g << 8) + (this->b << 16) + (this->a << 24);
-	}
-};
 
 static std::tuple<BYTE*, int>QoiEncode(BYTE* data, int width, int height, int channels, int colorspace) {
 	int last_color = width * height * channels - channels;
